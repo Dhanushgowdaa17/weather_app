@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right,rgb(12, 15, 18),rgb(10, 12, 14));
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+
+        h1 {
+            color:rgb(112, 172, 207);
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            width: 250px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005f87;
+        }
+
+        .weather-box {
+            margin-top: 40px;
+            font-size: 22px;
+            background-color: #ffffffdd;
+            display: inline-block;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>☀️ Weather App</h1>
+    
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if weather %}
+        <div class="weather-box">
+            <p><strong>{{ weather.city }}</strong></p>
+            <p>{{ weather.description }}</p>
+            <p>{{ weather.temperature }}°C</p>
+        </div>
+    {% endif %}
+</body>
+</html>
